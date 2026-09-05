@@ -1,0 +1,66 @@
+{%  load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usage Tracker</title>
+    <link rel="stylesheet" href="{% static 'services/style.css' %}">
+</head>
+<body>
+<h1>My Services</h1>
+{% if services %}
+    <div class="services">
+        {% for service in services %}
+            <div class="card">
+                <h2>{{ service.name }}</h2>
+                <p class="provider">
+                    {{ service.provider.name }}
+                </p>
+                {% for plan in service.plans.all %}
+                    <div class="plan">
+                        <div class="plan-name">
+                            {{ plan.name }}
+                        </div>
+                        <div class="details">
+                            <p>
+                                <strong>Price:</strong>
+                                {{ plan.price }} {{ plan.currency }}
+                            </p>
+                            <p>
+                                <strong>Billing:</strong>
+                                {{ plan.get_billing_cycle_display }}
+                            </p>
+                            <p>
+                                <strong>Renewal:</strong>
+                                {% if plan.renewal_date %}
+                                    {{ plan.renewal_date }}
+                                {% else %}
+                                    Not applicable
+                                {% endif %}
+                            </p>
+                            <p>
+                                <strong>Auto-renew:</strong>
+                                {% if plan.auto_renew %}
+                                    Yes
+                                {% else %}
+                                    No
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p class="empty">
+                        No plans configured.
+                    </p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="empty">
+        No services configured.
+    </p>
+{% endif %}
+</body>
+</html>

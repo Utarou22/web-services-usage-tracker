@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 24px;
+    background: #ffffff;
+}
+
+h1 {
+    margin-bottom: 24px;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+
+.provider {
+    color: #666;
+    margin-top: 0;
+}
+
+.plan {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+}
+
+.plan-name {
+    font-weight: bold;
+}
+
+.details {
+    margin-top: 12px;
+}
+
+.details p {
+    margin: 6px 0;
+}
+
+.empty {
+    color: #777;
+}
